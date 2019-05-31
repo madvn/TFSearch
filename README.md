@@ -54,4 +54,4 @@ with tf.Session() as sess:
     with tf.variable_scope('population'):
         best_solution = sess.run(tf.get_variable('pop'))[0] # since the population is always ranked by TFSearch
 ```
-The <link to examples> folder shows different implementations of *convert_genotype_to_phenotype* and *evaluate_fitness* for different task and how one might use Tensorflow for implementing those functions.
+The [examples](https://github.com/madvn/TFSearch/tree/master/examples) folder shows different implementations of *convert_genotype_to_phenotype* and *evaluate_fitness* for different task and how one might use Tensorflow for implementing those functions.
