@@ -1,4 +1,4 @@
-# TFSearch - A starter package for evolutionary optimization using Tensorflow
+# [WIP] TFSearch - A starter package for evolutionary optimization using Tensorflow
 
 This repo has code that has a fully-vectorized implementation of an evolutionary algorithm in Tensorflow that can fully take advantage of GPUs' super-fast matrix transformation abilities. TFSearch.py can be used by anyone with custom genotype-phenotype conversion and fitness evaluation operations (preferably in Tensorflow for best results) to perform evolutionary optimization for any task.
 
@@ -11,7 +11,7 @@ See example for optimizing a CTRNN to produce oscillations [here](https://github
 TODO
 - [ ] Packagify
 - [ ] Make and push tests
-- [ ] Docs for examples
+- [ ] Test examples, add figures and docs
 
 ## Getting Started
 Download TFSearch.py and save it some place you can import it from and then in your script
