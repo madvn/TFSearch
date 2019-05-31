@@ -6,6 +6,8 @@ A quick introduction to evolutionary optimization can be found [here](https://gi
 
 This package has mostly been written with the aim of optimizing [CTRNN]s(https://github.com/madvn/CTRNN) using evolutionary search on GPUs.
 
+See example for optimizing a CTRNN to produce oscillations [here](https://github.com/madvn/TFSearch/tree/master/examples/CTRNN_oscillator).
+
 TODO
 - [ ] Packagify
 - [ ] Make and push tests
