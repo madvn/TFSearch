@@ -4,7 +4,7 @@ This repo has code that has a fully-vectorized implementation of an evolutionary
 
 A quick introduction to evolutionary optimization can be found [here](https://github.com/madvn/TFSearch/blob/master/evol_intro.md)
 
-This package has mostly been written with the aim of optimizing [CTRNN]s(https://github.com/madvn/CTRNN) using evolutionary search on GPUs.
+This package has mostly been written with the aim of optimizing [CTRNN](https://github.com/madvn/CTRNN)s using evolutionary search on GPUs.
 
 See example for optimizing a CTRNN to produce oscillations [here](https://github.com/madvn/TFSearch/tree/master/examples/CTRNN_oscillator).
 
