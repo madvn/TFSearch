@@ -16,7 +16,7 @@ from TFSearch import *
 from NetworkPop import *
 
 
-def main():
+def learn_mnist():
     # initialize a population
     thisPop = np.random.uniform(
         size=(EVOL_P["pop_size"], EVOL_P["genotype_size"]),
