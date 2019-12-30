@@ -16,7 +16,7 @@ The goal here is to optimize CTRNNs to have intrinsic oscillatory dynamics. The 
 
 Fitness over time               |  Evolved oscillator
 :-------------------------:|:-------------------------:
-<img src="https://github.com/madvn/TFSearch/blob/master/examples/CTRNN_oscillator/results/fitsvsGens.png" width="150"/>  |  <img src="https://github.com/madvn/TFSearch/blob/master/examples/CTRNN_oscillator/results/outputs.png" width="150"/>
+<img src="https://github.com/madvn/TFSearch/blob/master/examples/CTRNN_oscillator/results/fitsvsGens.png" width="300"/>  |  <img src="https://github.com/madvn/TFSearch/blob/master/examples/CTRNN_oscillator/results/outputs.png" width="300"/>
 
 
 #### 3. Evolving neural networks to discriminate MNIST
