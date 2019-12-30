@@ -6,6 +6,7 @@ with the whole population of networks data-typed as a single matrix.
 Author: Madhavun Candadai
 Date Created: Sep 23, 2017
 """
+import functools
 import numpy as np
 import tensorflow as tf
 from TFSearch import *  # just to use the popPl placeholder
