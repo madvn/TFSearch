@@ -6,5 +6,5 @@ The goal here is to evolve a target bitmap image that is not known. The learning
 
 Target image vs Evolved image
 
-![Target image](https://github.com/madvn/TFSearch/blob/master/examples/evolImage/targetImage.bmp | width=100)
-<img src="https://github.com/madvn/TFSearch/blob/master/examples/evolImage/bestEvolvedImage.bmp" width=100>
+<img src="https://github.com/madvn/TFSearch/blob/master/examples/evolImage/targetImage.bmp" width="150"/>
+<img src="https://github.com/madvn/TFSearch/blob/master/examples/evolImage/bestEvolvedImage.bmp" width="150"/>
