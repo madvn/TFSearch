@@ -34,7 +34,7 @@ def main():
 
     print("\nStarting to run session")
     print(["Generation", "Best Fitnesss", "Mean Fitness"])
-    with NetworkPop(EVOL_P) as nets:
+    """with NetworkPop(EVOL_P) as nets:
         for gen in np.arange(EVOL_P["maxGens"] / 2):
             inputs_, y_ = mnist.train.next_batch(EVOL_P["numSamples"])
             y_ = [np.argmax(y_, 1)]
@@ -54,12 +54,13 @@ def main():
                 print(gen + 1, bestFs, meanFs)
 
             # Producing a new population given this population and its fitnesss using Generation_Reproduce
-            thisPop = sess.run(tfs.generation_step, {pop_pl: thisPop, fits_pl: fs})
+            thisPop = sess.run(tfs.generation_step, {pop_pl: thisPop, fits_pl: fs})"""
 
+    fitnessess = []
     # Change params and continue running
-    EVOL_P["mutation_variance"] = EVOL_P["mutation_variance"] / 2.0
+    EVOL_P["mutation_variance"] = EVOL_P["mutation_variance"]
     with NetworkPop(EVOL_P) as nets:
-        for gen in range(EVOL_P["maxGens"] * 2):
+        for gen in range(EVOL_P["maxGens"]):
             inputs_, y_ = mnist.train.next_batch(EVOL_P["numSamples"])
             y_ = [np.argmax(y_, 1)]
 
@@ -70,6 +71,7 @@ def main():
                 y_ = [np.argmax(y_, 1)]
                 fs += sess.run(nets.fitness, {pop_pl: thisPop, ins: inputs_, ys: y_})
             fs /= EVOL_P["numTrials"]
+            fitnessess.append(np.max(fs))
 
             # printing out some stats occasionally
             if gen == 0 or (gen + 1) % 100 == 0:
@@ -90,11 +92,14 @@ def main():
         fs = sess.run(nets.fitness, {pop_pl: thisPop, ins: inputs_, ys: y_})
         print(fs[0], "\n\n")
 
-    # Since the population is always ordered, the best individual is always the first
-    # bestIndividual = [thisPop[0][:]]
-    # weights,biases = sess.run(nets.phenotypes,{pop_pl:bestIndividual})
-    # print np.shape(weights),'===',np.shape(biases)
+    return fitnessess
 
 
 if __name__ == "__main__":
-    main()
+    for r in range(5):
+        fits = learn_mnist()
+        np.save("./results/fits_{}.npy".format(r), fits)
+        plt.plot(fits)
+    plt.xlabel("Generations")
+    plt.ylabel("Fitness")
+    plt.savefig("./results/fitsvsGens.png")
