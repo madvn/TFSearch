@@ -12,7 +12,7 @@ Target image               |  Evolved image
 
 #### 2. Evolving to generate neural network oscillators
 
-The goal here is to optimize CTRNNs to have intrinsic oscillatory dynamics. The fitness function was defined to measure the average absolute difference in neural network activity in consecutive time-steps during the course of a simulation.
+The goal here is to optimize CTRNNs to have intrinsic oscillatory dynamics. The fitness function was defined to measure the average absolute difference in neural network activity in consecutive time-steps during the course of a simulation. Results from 5 different runs are shown here along with sample activity from the 5 neurons at the end of one of the runs.
 
 Fitness over time               |  Evolved oscillator
 :-------------------------:|:-------------------------:
