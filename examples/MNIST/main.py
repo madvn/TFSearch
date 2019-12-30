@@ -10,6 +10,11 @@ Date Created: Sep 18, 2017
 import numpy as np
 import tensorflow as tf
 import scipy.misc
+import matplotlib
+
+matplotlib.use("TkAgg")
+import matplotlib.pyplot as plt
+
 from tensorflow.examples.tutorials.mnist import input_data
 from params import *
 from TFSearch import *
