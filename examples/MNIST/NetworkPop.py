@@ -76,7 +76,7 @@ class NetworkPop:
         numpy.
         """
         self.setParams(EVOL_P)
-        self.pop = popPl
+        self.pop = pop_pl
         self.inputs = ins
         self.y = ys
         self.numSamples = EVOL_P["numSamples"]  # ns
@@ -138,8 +138,8 @@ class NetworkPop:
         return fits
 
     def setParams(self, E_P):
-        self.popSize = E_P["popSize"]
-        self.genotypeSize = E_P["genotypeSize"]
+        self.popSize = E_P["pop_size"]
+        self.genotypeSize = E_P["genotype_size"]
         self.scalingUB = E_P["scalingUB"]
         self.scalingLB = E_P["scalingLB"]
 

@@ -6,15 +6,16 @@ import numpy as np
 
 ## Required Parameters
 EVOL_P = {
-    "genotypeSize": 7850,
-    "genotypeMinVal": 0,
-    "genotypeMaxVal": 1,
+    "pop_size": 50,
+    "genotype_size": 7850,
+    "genotype_min_val": 0,
+    "genotype_max_val": 1,
     "scalingUB": np.ones(7850) * 50,  # upper bound for scaling genotype
     "scalingLB": np.zeros(7850),  # lower bound for scaling genotype
     "popSize": 100,
     "maxGens": 2000,
-    "elitistFraction": 0.1,
-    "mutationVariance": 0.05,
+    "elitist_fraction": 0.1,
+    "mutation_variance": 0.05,
     "numSamples": 20000,
     "numTrials": 1,
 }
