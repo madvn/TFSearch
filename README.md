@@ -1,4 +1,4 @@
-# [WIP] TFSearch - A starter package for evolutionary optimization using Tensorflow
+# TFSearch - A starter package for evolutionary optimization using Tensorflow
 
 This repo has code that has a fully-vectorized implementation of an evolutionary algorithm in Tensorflow that can fully take advantage of GPUs' super-fast matrix transformation abilities. TFSearch.py can be used by anyone with custom genotype-phenotype conversion and fitness evaluation operations (preferably in Tensorflow for best results) to perform evolutionary optimization for any task.
 
@@ -10,7 +10,7 @@ See example for optimizing a CTRNN to produce oscillations [here](https://github
 
 TODO
 - [ ] Packagify
-- [ ] Make and push tests
+- [ ] Tests
 - [ ] Test examples, add figures and docs
 
 ## Getting Started
@@ -18,7 +18,7 @@ Download TFSearch.py and save it some place you can import it from and then in y
 ```
 from TFSearch import *
 ```
-The dependencies are <link to numpy> and <link to Tensorflow>. TFSearch is implemented such that the init() defines the graph for step_generation. Therefore, the graph can be instantiated by creating an object of the TFSearch class.
+The dependencies are numpy and Tensorflow. TFSearch is implemented such that the init() defines the graph for `step_generation`. Therefore, the graph can be instantiated by creating an object of the TFSearch class.
 ```
 tfs = TFSearch(EVOL_P)
 ```
@@ -33,25 +33,42 @@ EVOL_P = {#required params for TFSearch
             'mutation_variance':0.1,
             'crossover_fraction':0.1,
             'crossover_probability': 0.3,
-            'device':'/gpu:0'}
+            }
 ```
-The object, *tfs*, while defining the graph for step_generation, also initializes the population tf.variable, *pop* under the variable_scope *population*, and provides a tf.placeholder *fits_pl* for the vector of fitnesses. Now, the evolutionary algorithm can be written as
+Importing * from TFSearch and creating the object provides the following to the user
+
+1. pop_pl - a placeholder for the population
+2. fits_pl - a placeholder for the fitness values of the population
+3. step_generation - a tensorflow graph operation that uses the fitness values and the current population to return a new population of solutions.
+
+The user needs to write their own function (preferably in Tensorflow) to estimate the fitness of the population for the task at hand. Note that the genotype is in the range `[0,1]` in the params shown above - the user might have to scale them before evaluating fitness. Once a fitness function has been defined, a typical search can be conducted as follows -
+
 ```
-with tf.Session() as sess:
-    tf.global_variables_initializer().run() #required to initialize the population variable
+# initialize a random population
+this_pop = np.random.uniform(
+    size=(EVOL_P["pop_size"], EVOL_P["genotype_size"]),
+    low=EVOL_P["genotype_min_val"],
+    high=EVOL_P["genotype_max_val"],
+)
 
-    # run for set number of generations
-    for gen in range(max_gens):
-        phenotypes = convert_genotype_to_phenotype() #could read from tf.get_variable('pop') and convert to phenotypes
-        # sess.run([convert_genotype_to_phenotype]) #could write Tensorflow code to read from tf.get_variable('pop')
+# create TensorFlow session
+sess = tf.Session()
 
-        fitness = evaluate_fitness(phenotypes) #evaluate fitnesses of phenotypes to give vector of fitnesses for the population
-        # fitness = sess.run([evaluate_fitness]) #could write Tensorflow code to evaluate phenotypes, possibly for the whole population at once
+# creating the TFSearch graph
+tfs = TFSearch(EVOL_P)
 
-        sess.run(tfs.step_generation,feed_dict={fits_pl:fitness})
+# run for set number of generations
+for gen in range(EVOL_P['max_gens']):
+    # ******* user-defined function depending on the task
+    fitness = evaluate_fitness(this_pop)
+    # OR could write Tensorflow code to evaluate phenotypes, possibly for the whole population at once
+    # fitness = sess.run([evaluate_fitness], feed_dict={pop_pl:this_pop})
 
-    # get the set of parameters corresponding to the best solution
-    with tf.variable_scope('population'):
-        best_solution = sess.run(tf.get_variable('pop'))[0] # since the population is always ranked by TFSearch
+    # now using TFSearch to create a new populaton based on their fitness
+    this_pop = sess.run(tfs.step_generation,feed_dict={pop_pl:this_pop, fits_pl:fitness})
+
+# Since the population is always ordered, the best individual is always the first
+best_solution = this_pop[0]
 ```
-The [examples](https://github.com/madvn/TFSearch/tree/master/examples) folder shows different implementations of *convert_genotype_to_phenotype* and *evaluate_fitness* for different task and how one might use Tensorflow for implementing those functions.
+
+The [examples](https://github.com/madvn/TFSearch/tree/master/examples) folder shows a few examples of using this package.
