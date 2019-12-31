@@ -27,4 +27,4 @@ The goal here is to classify the MNIST digits using a single-layer feed-forward 
 
 Fitness over time               |  Avg. Validation Perf
 :-------------------------:|:-------------------------:
-<img src="https://github.com/madvn/TFSearch/blob/master/examples/MNIST/results/fitsvsGens.png" width="400"/>  |  89.43%
+<img src="https://github.com/madvn/TFSearch/blob/master/examples/MNIST/results/fitsvsGens.png" width="500"/>  |  89.43%
