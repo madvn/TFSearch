@@ -9,9 +9,11 @@ This package has mostly been written with the aim of optimizing [CTRNN](https://
 See example for optimizing a CTRNN to produce oscillations [here](https://github.com/madvn/TFSearch/tree/master/examples/CTRNN_oscillator).
 
 TODO
+- [ ] pop_pl can be a tf.Variable
+- [ ] provide fitness function to TFSearch
 - [ ] Packagify
 - [ ] Tests
-- [ ] Test examples, add figures and docs
+- [X] Test examples, add figures and docs
 
 ## Getting Started
 Download TFSearch.py and save it some place you can import it from and then in your script

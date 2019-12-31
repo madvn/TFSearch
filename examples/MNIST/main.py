@@ -38,32 +38,9 @@ def learn_mnist():
     mnist = input_data.read_data_sets("MNIST_data/", one_hot=True)
 
     print("\nStarting to run session")
-    print(["Generation", "Best Fitnesss", "Mean Fitness"])
-    """with NetworkPop(EVOL_P) as nets:
-        for gen in np.arange(EVOL_P["maxGens"] / 2):
-            inputs_, y_ = mnist.train.next_batch(EVOL_P["numSamples"])
-            y_ = [np.argmax(y_, 1)]
-
-            # Given a population, first compute fitness using the user defined graph, Generation_Life
-            fs = sess.run(nets.fitness, {pop_pl: thisPop, ins: inputs_, ys: y_})
-            for _ in range(EVOL_P["numTrials"] - 1):
-                inputs_, y_ = mnist.train.next_batch(EVOL_P["numSamples"])
-                y_ = [np.argmax(y_, 1)]
-                fs += sess.run(nets.fitness, {pop_pl: thisPop, ins: inputs_, ys: y_})
-            fs /= EVOL_P["numTrials"]
-
-            # printing out some stats occasionally
-            if gen == 0 or (gen + 1) % 100 == 0:
-                bestFs = np.max(fs)
-                meanFs = np.mean(fs)
-                print(gen + 1, bestFs, meanFs)
-
-            # Producing a new population given this population and its fitnesss using Generation_Reproduce
-            thisPop = sess.run(tfs.generation_step, {pop_pl: thisPop, fits_pl: fs})"""
-
     fitnessess = []
-    # Change params and continue running
-    EVOL_P["mutation_variance"] = EVOL_P["mutation_variance"]
+    print(["Generation", "Best Fitnesss", "Mean Fitness"])
+
     with NetworkPop(EVOL_P) as nets:
         for gen in range(EVOL_P["maxGens"]):
             inputs_, y_ = mnist.train.next_batch(EVOL_P["numSamples"])
