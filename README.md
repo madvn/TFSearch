@@ -6,14 +6,16 @@ A quick introduction to evolutionary optimization can be found [here](https://gi
 
 This package has mostly been written with the aim of optimizing [CTRNN](https://github.com/madvn/CTRNN)s using evolutionary search on GPUs.
 
-See example for optimizing a CTRNN to produce oscillations [here](https://github.com/madvn/TFSearch/tree/master/examples/CTRNN_oscillator).
-
 TODO
 - [ ] pop_pl can be a tf.Variable
 - [ ] provide fitness function to TFSearch
 - [ ] Packagify
 - [ ] Tests
 - [X] Test examples, add figures and docs
+
+## Examples
+
+See examples from evolving for images, dynamical neural network oscillators as well as for classifying MNIST [here](https://github.com/madvn/TFSearch/blob/master/examples/README.md)
 
 ## Getting Started
 Download TFSearch.py and save it some place you can import it from and then in your script
